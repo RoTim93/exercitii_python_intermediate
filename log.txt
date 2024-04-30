@@ -1,0 +1,6 @@
+2024-04-29 21:15:19.093509 - add_task - ('ADF', 'asdas', 'asdasd', 'High', 'Complete')
+2024-04-29 21:15:34.581480 - view_tasks - ()
+2024-04-29 21:15:48.883838 - delete_task - (1,)
+2024-04-29 21:16:06.694782 - add_task - ('asdf', 'dfgdsf', 'sdfgsdf', 'sdfgsdf', 'sdfsd')
+2024-04-29 21:17:17.687949 - add_task - ('sdfgsdf', 'dsfgsdfg', 'sdfgsdfg', 'qerteqr', 'sdfgsdfg')
+2024-04-29 21:32:45.071335 - add_task - ('dulap', 'furnituyre\\', 'asd2342', 'high', 'sdfs')
