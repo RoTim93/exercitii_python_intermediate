@@ -11,6 +11,7 @@
 import json
 import os
 from datetime import datetime
+from collections.abc import Iterable
 
 TASKS_FILE = 'tasks.json'
 
@@ -24,6 +25,31 @@ def log_operation(func):
 
     return wrapper
 
+class JsonIterator(Iterable):
+
+    def __init__(self, filepath):
+        self.filepath = filepath
+
+    def __iter__(self):
+        with open(self.filepath, 'r') as file:
+            self.tasks = json.load(file)
+        self.index = 0
+        return self
+
+    def __next__(self):
+        if not hasattr(self, 'tasks'):
+            raise StopIteration
+        elif self.index < len(self.tasks):
+            task = self.tasks[self.index] # [] -> operator de indexare
+            self.index += 1
+            return task
+        else:
+            raise StopIteration
+
+    def __getitem__(self, index):
+        with open(self.filepath, 'r') as file:
+            tasks = json.load(file)
+        return tasks[index]
 
 class TaskManager:
 
@@ -99,6 +125,9 @@ class TaskManager:
 
 def main():
     t1 = TaskManager()
+    taskuri = JsonIterator(TASKS_FILE)
+    print(sum(1 for _ in taskuri))
+    print(taskuri[3])
     while True:
         print("1. Add Task")
         print("2. Update Task")
